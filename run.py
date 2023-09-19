@@ -9,12 +9,14 @@ from exp.exp_classification import Exp_Classification
 import random
 import numpy as np
 
+
+
+
 if __name__ == '__main__':
     fix_seed = 2021
     random.seed(fix_seed)
     torch.manual_seed(fix_seed)
     np.random.seed(fix_seed)
-
     parser = argparse.ArgumentParser(description='TimesNet')
 
     # basic config
@@ -94,8 +96,15 @@ if __name__ == '__main__':
                         help='hidden layer dimensions of projector (List)')
     parser.add_argument('--p_hidden_layers', type=int, default=2, help='number of hidden layers in projector')
 
+    #RNN Relevant
+    parser.add_argument('--hidden_dims', type=int, nargs='+', default=[128, 128],
+                        help='hidden layer dimensions of projector (List)')
+    parser.add_argument('--hidden_layers', type=int, default=2, help='number of hidden layers')
+
 
     args = parser.parse_args()
+
+    
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
 
     if args.use_gpu and args.use_multi_gpu:
