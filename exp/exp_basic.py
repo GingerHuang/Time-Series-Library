@@ -23,8 +23,8 @@ class Exp_Basic(object):
             'MICN': MICN,
             'Crossformer': Crossformer,
             'FiLM': FiLM,
-            'LSTM':LSTMa
-            # 'Affinity':Affinity,
+            'LSTM':LSTMa,
+            'Affinity':Affinity
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
